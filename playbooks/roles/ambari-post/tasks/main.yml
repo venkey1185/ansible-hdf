@@ -1,0 +1,16 @@
+---
+- name: Create ambari home directory in hdfs
+  shell: 'sudo -u hdfs hdfs dfs -mkdir /user/ambari'
+  become_user: hdfs
+
+- name: Update Owner to ambari in HDFS
+  shell: 'sudo -u hdfs hdfs dfs -chown -R ambari:hdfs /user/ambari'
+  become_user: hdfs
+
+- name: Refresh hdfs to add ambari to User list
+  shell: 'sudo -u hdfs hdfs dfsadmin -refreshUserToGroupsMappings'
+  become_user: hdfs
+
+- name: Grant hbase access to ambari user
+  shell: 'echo "grant 'ambari','RWCA'" | hbase shell -n'
+  become_user: hbase
