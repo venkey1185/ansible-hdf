@@ -23,7 +23,7 @@ firewall_rules:
 
 nodes:
   - role: "hdp-master"
-    count: 1
+    count: 0
     image: centos-7
     type: n1-highmem-4
     public_ip: true
@@ -33,9 +33,18 @@ nodes:
     ambari_server: true
     hadoop_cluster: true
 
+ - role: "hdf-master"
+    count: 1
+    image: centos-7
+    type: n1-highmem-4
+    public_ip: true
+    root_disk:
+      type: pd-ssd
+      size: 100
+    ambari_server: true
 
   - role: "hdp-slave"
-    count: 2
+    count: 0
     image: centos-7
     type: n1-highmem-2
     public_ip: true
@@ -55,7 +64,7 @@ nodes:
       size: 20
 
   - role: "dbhost"
-    count: 1
+    count: 0
     image: centos-7
     type: n1-standard-1
     public_ip: true
