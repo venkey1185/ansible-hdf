@@ -133,7 +133,7 @@
 {% endif %}
 {% if hdf_hosts|length > 0 %}
     {
-      "ranger-nifi-plugin-properties" : {
+      "ranger-fifi-plugin-properties" : {
         "ranger-nifi-plugin-enabled" : "No"
       }
     },
@@ -253,6 +253,19 @@
       "nifi-env" : {
         "nifi_group" : "nifi",
         "nifi_user" : "nifi"
+      }
+    },
+    {
+      "nifi-registry-ambari-config": {
+         "nifi.registry.port": "61080", 
+         "nifi.registry.database.dir": "{nifi_registry_internal_dir}/database", 
+         "nifi.registry.max_mem": "512m", 
+         "nifi.registry.initial_mem": "512m", 
+         "nifi.registry.security.encrypt.configuration.password": "{{ nifi_options.nifi_registry_password}}", 
+         "nifi.registry.internal.config.dir": "{nifi_registry_internal_dir}/conf", 
+         "nifi.registry.port.ssl": "61443", 
+         "nifi.registry.config.dir": "{nifi_registry_install_dir}/conf", 
+         "nifi.registry.internal.dir": "/var/lib/nifi-registry"
       }
     },
 {% if streamline_hosts|length > 0 %}
@@ -631,7 +644,7 @@
       "type" : "KERBEROS"
     },
 {% endif %}
-   "stack_name" : "{% if namenode_groups|length > 0 %}HDP{% else %}HDP{% endif %}",
-      "stack_version" : "{% if namenode_groups|length > 0 %}{{ hdp_version | regex_replace('.[0-9]+.[0-9]+[0-9_-]*$','') }}{% else %}{{ hdp_version | regex_replace('.[0-9]+.[0-9]+[0-9_-]*$','') }}{% endif %}"
+   "stack_name" : "{% if namenode_groups|length > 0 %}HDP{% else %}HDF{% endif %}",
+      "stack_version" : "{% if namenode_groups|length > 0 %}{{ hdp_version | regex_replace('.[0-9]+.[0-9]+[0-9_-]*$','') }}{% else %}{{ hdf_version | regex_replace('.[0-9]+.[0-9]+[0-9_-]*$','') }}{% endif %}"
   }
 }

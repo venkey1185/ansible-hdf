@@ -8,7 +8,7 @@ cloud_config:
   network:
     name: hdp-network
     subnet: hdp-network-sub-01
-    address: '192.168.0.0/16'
+    address: '10.1.1.0/24'
 
 firewall_rules:
   - name: "{{ cloud_config.network.name }}-allow-internal"            # default firewall rule - do not change
@@ -33,7 +33,7 @@ nodes:
     ambari_server: true
     hadoop_cluster: true
 
- - role: "hdf-master"
+  - role: "hdf-master"
     count: 1
     image: centos-7
     type: n1-highmem-4
@@ -42,6 +42,7 @@ nodes:
       type: pd-ssd
       size: 100
     ambari_server: true
+    hdf_cluster: true
 
   - role: "hdp-slave"
     count: 0

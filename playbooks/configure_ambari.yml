@@ -2,7 +2,7 @@
 - include: "set_variables.yml"
 
 - name: Gather facts from all nodes
-  hosts: hadoop-cluster
+  hosts: hdf-cluster
   any_errors_fatal: true
   become: yes
 

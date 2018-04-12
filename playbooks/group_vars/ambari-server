@@ -36,6 +36,13 @@ database_options:
   druid_db_username: 'druid'
   druid_db_password: 'druid'
 
+########################
+## Nifi Configuration ##
+########################
+
+nifi_options:                                                 
+  nifi_registry_password: 'MasterRegistry123'                                # Nifi Registry Master Encrypt password
+
 ##########################
 ## ranger configuration ##                                      # only useful if blueprint is dynamic
 ##########################

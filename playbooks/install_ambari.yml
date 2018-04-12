@@ -1,8 +1,8 @@
 ---
 - include: "set_variables.yml"
 
-- name: Apply the ambari-agent role to the hadoop-cluster group
-  hosts: hadoop-cluster
+- name: Apply the ambari-agent role to the hdf-cluster group
+  hosts: hdf-cluster
   any_errors_fatal: true
   become: yes
   roles:

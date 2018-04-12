@@ -1,16 +1,16 @@
 ---
 - include: "set_variables.yml"
 
-- name: Apply the post-install role to the hadoop-cluster group
-  hosts: hadoop-cluster
-  any_errors_fatal: true
-  become: yes
-  roles:
-    - post-install
-
-- name: Apply the post-install role to the ambari-server group
-  hosts: ambari-server
-  any_errors_fatal: true
-  become: yes
-  roles:
-    - ambari-post
+#- name: Apply the post-install role to the hdf-cluster group
+#  hosts: hdf-cluster
+#  any_errors_fatal: true
+#  become: yes
+#  roles:
+#    - post-install
+#
+#- name: Apply the post-install role to the ambari-server group
+#  hosts: ambari-server
+#  any_errors_fatal: true
+#  become: yes
+#  roles:
+##    - ambari-post
